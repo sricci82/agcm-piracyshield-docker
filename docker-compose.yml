@@ -12,12 +12,10 @@ services:
       - NET_ADMIN
       - SYS_ADMIN
       - SYS_MODULE
-    # stdin_open: true
-    # tty: true
     env_file:
       - .env
     extra_hosts:
-      - "psp01-dev.agcom.it:${IPSEC_REMOTE_TS}"
+      - "${AGCM_HOSTNAME}:${IPSEC_REMOTE_TS}"
     command: ["/docker-entrypoint.sh"]
     init: true
 

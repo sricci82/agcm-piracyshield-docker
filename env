@@ -1,0 +1,22 @@
+# The "Local NAT IP Addr"
+IPSEC_LOCAL_TS=10.0.0.1
+
+# The "Local LAN IP Addr"
+IPSEC_REMOTE_TS=10.253.0.1
+
+# The "Peer IP"
+IPSEC_REMOTE_PUBLIC_IP=198.51.100.1
+
+# Our public ip address
+IPSEC_LOCAL_PUBLIC_IP=192.0.2.1
+
+# These should be self-explaining
+IPSEC_PHASE2_LIFETIME=27000
+IPSEC_PHASE2_LIFEBYTES=102400000
+IPSEC_PHASE2_PROPOSALS=aes256-sha256
+IPSEC_PHASE1_LIFETIME=28800
+IPSEC_PHASE1_PROPOSALS=aes256-sha256-modp1024
+IPSEC_PSK=placeyourpskhere
+
+# Hostname of the webserver (will be added to /etc/hosts pointing to ${IPSEC_REMOTE_TS}
+AGCM_HOSTNAME="xxx.domain.tld"
