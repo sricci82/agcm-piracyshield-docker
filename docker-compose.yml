@@ -1,0 +1,39 @@
+version: "3"
+
+services:
+  # The real vpn client
+  vpn-client:
+    build: ./build_strongswan
+    image: apuacom/strongswan
+    ports:
+      - '3322:3322/tcp'
+      - '3389:3389/tcp'
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+      - SYS_MODULE
+    # stdin_open: true
+    # tty: true
+    env_file:
+      - .env
+    extra_hosts:
+      - "psp01-dev.agcom.it:${IPSEC_REMOTE_TS}"
+    command: ["/docker-entrypoint.sh"]
+    init: true
+
+  xubuntu:
+    image: apuacom/xubuntu
+    build: ./build_xubuntu
+    network_mode: "service:vpn-client"
+    privileged: true
+    shm_size: '8gb'
+    devices:
+      - '/dev/dri:/dev/dri'
+    environment:
+      - UNPRIVILEGED_USER_GROUPS=27
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 198.19.0.0/28
