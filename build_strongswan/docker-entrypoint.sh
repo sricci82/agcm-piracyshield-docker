@@ -32,7 +32,7 @@ connections {
 
       version = 2
       mobike = no
-      reauth_time = ${IPSEC_PHASE1_LIFETIME}
+      rekey_time = ${IPSEC_PHASE1_LIFETIME}
       proposals = ${IPSEC_PHASE1_PROPOSALS}
    }
 }
