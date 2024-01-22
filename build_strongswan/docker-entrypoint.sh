@@ -19,6 +19,7 @@ connections {
       children {
          piracyshield {
             start_action = start
+	    dpd_action = restart
             local_ts  = ${IPSEC_LOCAL_TS}/32
             remote_ts = ${IPSEC_REMOTE_TS}/32
 
@@ -32,6 +33,9 @@ connections {
 
       version = 2
       mobike = no
+      keyingtries = 0
+      dpd_delay = 30
+      dpd_timeout = 120
       rekey_time = ${IPSEC_PHASE1_LIFETIME}
       proposals = ${IPSEC_PHASE1_PROPOSALS}
    }
