@@ -19,6 +19,7 @@ connections {
       children {
          piracyshield {
             start_action = start
+	    close_action = start
 	    dpd_action = restart
             local_ts  = ${IPSEC_LOCAL_TS}/32
             remote_ts = ${IPSEC_REMOTE_TS}/32
